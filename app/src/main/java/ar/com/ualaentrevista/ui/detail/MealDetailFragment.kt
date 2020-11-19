@@ -34,6 +34,13 @@ class RecipeDetailFragment : CustomBaseFragment<
                 .error(R.color.transparent)
                 .into(recipeImage)
 
+            val urlVideo = meal.strYoutube?.replace(
+                BASE_YOUTUBE_URL,
+                EMBED_YOUTUBE_URL
+            )
+            recipeVideo.settings.javaScriptEnabled = true
+            recipeVideo.loadUrl(urlVideo)
+
             recipeName.text = meal.strMeal
             recipeInstructions.text = meal.strInstructions
 
@@ -55,6 +62,8 @@ class RecipeDetailFragment : CustomBaseFragment<
         }
 
         private const val MEAL_SERIALIZED_KEY = "MEAL_SERIALIZED_KEY"
+        const val BASE_YOUTUBE_URL = "https://www.youtube.com/watch?v="
+        const val EMBED_YOUTUBE_URL = "https://www.youtube.com/embed/"
     }
 }
 
