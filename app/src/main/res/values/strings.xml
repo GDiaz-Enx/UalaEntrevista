@@ -9,8 +9,4 @@
     <string name="home_search_list_empty">No se encontraron recetas con tus filtros de búsqueda</string>
     <string name="home_search_list_error">Ocurrió un error al realizar la búsqueda</string>
 
-    <!-- Recipe Detail -->
-    <string name="recipe_detail_toolbar_title">Detalle</string>
-    <string name="recipe_detail_ingredient_list_title">Ingredientes</string>
-
 </resources>

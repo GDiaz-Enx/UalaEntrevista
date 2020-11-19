@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- General -->
+    <dimen name="margin_1">1dp</dimen>
+    <dimen name="margin_5">5dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_15">15dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="margin_40">40dp</dimen>
+    <dimen name="margin_60">60dp</dimen>
+    <dimen name="font_15">15sp</dimen>
+    <dimen name="font_18">18sp</dimen>
+    <dimen name="font_20">20sp</dimen>
+    <dimen name="font_26">26sp</dimen>
+
+    <!-- Home Recipes -->
+    <dimen name="item_home_recipes_height">80dp</dimen>
+    <dimen name="item_home_recipes_banner_height">60dp</dimen>
+    <dimen name="item_home_recipes_image_width">100dp</dimen>
+    <dimen name="item_home_recipes_image_height">60dp</dimen>
+    <dimen name="item_home_recipes_image_background">80dp</dimen>
+
+</resources>
