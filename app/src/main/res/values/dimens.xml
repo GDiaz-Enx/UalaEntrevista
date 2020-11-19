@@ -20,4 +20,8 @@
     <dimen name="item_home_recipes_image_height">60dp</dimen>
     <dimen name="item_home_recipes_image_background">80dp</dimen>
 
+    <!-- Recipe Detail -->
+    <dimen name="recipe_detail_image_height">220dp</dimen>
+    <dimen name="recipe_detail_image_gradient_height">100dp</dimen>
+
 </resources>

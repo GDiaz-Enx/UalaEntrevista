@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:animateLayoutChanges="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true">
+
+                <ImageView
+                    android:id="@+id/recipeImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recipe_detail_image_height"
+                    android:scaleType="centerCrop"
+                    android:background="@color/black"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recipe_detail_image_gradient_height"
+                    android:background="@drawable/gradient_orange_transparent_vertical"
+                    app:layout_constraintTop_toTopOf="@id/recipeImage"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/recipe_detail_image_gradient_height"
+                    android:background="@drawable/gradient_transparent_white_vertical"
+                    app:layout_constraintBottom_toBottomOf="@id/recipeImage"
+                    app:layout_constraintStart_toStartOf="parent"/>
+
+                <TextView
+                    android:id="@+id/recipeName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/dark_titles"
+                    android:textSize="@dimen/font_26"
+                    android:textStyle="bold"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:layout_marginEnd="@dimen/margin_15"
+                    android:gravity="center_horizontal"
+                    app:layout_constraintBottom_toBottomOf="@id/recipeImage"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    android:text="Recipe Name"/>
+
+                <TextView
+                    android:id="@+id/recipeInstructions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/font_18"
+                    android:textColor="@color/dark_titles"
+                    android:background="@color/white"
+                    android:layout_margin="@dimen/margin_20"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recipeName"
+                    tools:text="instructions"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/margin_20"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/recipeInstructions"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+    </LinearLayout>
+</layout>

@@ -1,5 +1,6 @@
 package ar.com.ualaentrevista.ui.home
 
+import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -10,7 +11,7 @@ import ar.com.ualaentrevista.base.CustomBaseFragment
 import ar.com.ualaentrevista.base.CustomBaseView
 import ar.com.ualaentrevista.databinding.SearchListFragmentBinding
 import ar.com.ualaentrevista.model.Meal
-import com.squareup.picasso.Picasso
+import ar.com.ualaentrevista.ui.detail.RecipeDetailFragment
 
 class SearchListFragment : CustomBaseFragment<
         SearchListFragmentBinding,
@@ -71,7 +72,12 @@ class SearchListFragment : CustomBaseFragment<
     }
 
     override fun mealClicked(meal: Meal) {
-        //TODO: Not implemented yet
+        val arguments = Bundle()
+        arguments.putSerializable(MEAL_SERIALIZED_KEY, meal)
+        requireActivity().supportFragmentManager.beginTransaction()
+            .add(R.id.fragmentContainer, RecipeDetailFragment.newInstance(meal))
+            .addToBackStack(null)
+            .commit()
     }
 
     override fun onRecipesLoadError() {
@@ -81,6 +87,7 @@ class SearchListFragment : CustomBaseFragment<
     companion object {
         fun newInstance() = SearchListFragment()
         const val EMPTY_SEARCH = ""
+        const val MEAL_SERIALIZED_KEY = "MEAL_SERIALIZED_KEY"
     }
 }
 
