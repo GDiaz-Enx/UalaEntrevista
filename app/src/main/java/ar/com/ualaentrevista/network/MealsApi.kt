@@ -11,8 +11,7 @@ interface MealsApi {
     @GET("search.php")
     suspend fun getRecipes(@Query("s") searchValue: String ): Response<MealsResponse>
 
-    //Los métodos con sufijo "Normal" consumen el endpoint sin coroutines
-    @GET("search.php")
-    fun getRecipesNormal(@Query("s") searchValue: String ): Call<MealsResponse>
+    @GET("random.php")
+    suspend fun getRandom(): Response<MealsResponse>
 
 }

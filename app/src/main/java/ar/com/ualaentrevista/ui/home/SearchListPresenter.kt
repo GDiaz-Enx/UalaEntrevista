@@ -22,4 +22,18 @@ class SearchListPresenter() : CustomBasePresenter<SearchListView>() {
         }
     }
 
+    fun getRandom() {
+        uiScope.launch {
+            val response = service.getRandom()
+            if (response.isSuccessful) {
+                if (!response.body()?.meals.isNullOrEmpty())
+                    view?.onLoadRandomSucess(response.body()?.meals!!.first())
+                else
+                    view?.onLoadRandomError()
+            } else {
+                view?.onLoadRandomError()
+            }
+        }
+    }
+
 }

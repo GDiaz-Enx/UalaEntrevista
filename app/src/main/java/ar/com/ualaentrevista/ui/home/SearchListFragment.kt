@@ -1,6 +1,7 @@
 package ar.com.ualaentrevista.ui.home
 
 import android.os.Bundle
+import android.os.Handler
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
@@ -12,11 +13,20 @@ import ar.com.ualaentrevista.base.CustomBaseView
 import ar.com.ualaentrevista.databinding.SearchListFragmentBinding
 import ar.com.ualaentrevista.model.Meal
 import ar.com.ualaentrevista.ui.detail.RecipeDetailFragment
+import com.squareup.picasso.Picasso
 
 class SearchListFragment : CustomBaseFragment<
         SearchListFragmentBinding,
         SearchListPresenter,
         SearchListView>(), SearchListView, MealClickedListener {
+
+    var mHandler: Handler = Handler()
+    private var mHandlerTask: Runnable = object : Runnable {
+        override fun run() {
+            presenter.getRandom()
+            mHandler.postDelayed(this, INTERVAL)
+        }
+    }
 
     override val presenter = SearchListPresenter()
 
@@ -24,6 +34,7 @@ class SearchListFragment : CustomBaseFragment<
 
     override fun init() {
         presenter.getRecipes(EMPTY_SEARCH)
+        startRepeatingTask()
     }
 
     override fun setListeners() {
@@ -71,6 +82,30 @@ class SearchListFragment : CustomBaseFragment<
         }
     }
 
+    private fun startRepeatingTask() {
+        mHandlerTask.run()
+    }
+
+    //Por si se quiere detener la obtención de recetas random
+    private fun stopRepeatingTask() {
+        mHandler.removeCallbacks(mHandlerTask)
+    }
+
+    override fun onLoadRandomSucess(meal: Meal) {
+        with(binding) {
+            bannerImage.visibility = View.VISIBLE
+            Picasso.with(context)
+                .load(meal.strMealThumb)
+                .placeholder(R.color.transparent)
+                .error(R.color.transparent)
+                .into(bannerImage)
+        }
+    }
+
+    override fun onLoadRandomError() {
+        binding.bannerImage.visibility = View.GONE
+    }
+
     override fun mealClicked(meal: Meal) {
         val arguments = Bundle()
         arguments.putSerializable(MEAL_SERIALIZED_KEY, meal)
@@ -88,6 +123,7 @@ class SearchListFragment : CustomBaseFragment<
         fun newInstance() = SearchListFragment()
         const val EMPTY_SEARCH = ""
         const val MEAL_SERIALIZED_KEY = "MEAL_SERIALIZED_KEY"
+        const val INTERVAL = (1000 * 30).toLong() //30 segundos
     }
 }
 
@@ -97,6 +133,10 @@ interface SearchListView : CustomBaseView {
     fun onRecipesLoadError()
 
     fun onEmptyRecipes()
+
+    fun onLoadRandomSucess(meal: Meal)
+
+    fun onLoadRandomError()
 
 }
 
