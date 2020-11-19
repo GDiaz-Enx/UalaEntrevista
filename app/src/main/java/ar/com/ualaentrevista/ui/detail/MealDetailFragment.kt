@@ -1,6 +1,8 @@
 package ar.com.ualaentrevista.ui.detail
 
+import android.annotation.SuppressLint
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import ar.com.ualaentrevista.R
 import ar.com.ualaentrevista.base.CustomBaseActivity
 import ar.com.ualaentrevista.base.CustomBaseFragment
@@ -12,13 +14,14 @@ import com.squareup.picasso.Picasso
 
 class RecipeDetailFragment : CustomBaseFragment<
         RecipeDetailFragmentBinding,
-        RecipeDetailPresenter,
+        MealDetailPresenter,
         RecipeDetailView>(), RecipeDetailView {
 
-    override val presenter = RecipeDetailPresenter()
+    override val presenter = MealDetailPresenter()
 
     override fun layout() = R.layout.recipe_detail_fragment
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun init() {
         showBackButton(true)
         (requireContext() as CustomBaseActivity).setToolbarTitle(getString(R.string.recipe_detail_toolbar_title))
@@ -33,6 +36,13 @@ class RecipeDetailFragment : CustomBaseFragment<
 
             recipeName.text = meal.strMeal
             recipeInstructions.text = meal.strInstructions
+
+            val adapter = ArrayAdapter(
+                requireContext(),
+                android.R.layout.simple_list_item_1,
+                Meal.getIngredientsMeasureList(meal)
+            )
+            ingredientsList.adapter = adapter
         }
     }
 

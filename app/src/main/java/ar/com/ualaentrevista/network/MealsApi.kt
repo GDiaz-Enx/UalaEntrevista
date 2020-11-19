@@ -6,7 +6,7 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
-interface RecipesApi {
+interface MealsApi {
 
     @GET("search.php")
     suspend fun getRecipes(@Query("s") searchValue: String ): Response<MealsResponse>

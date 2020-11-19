@@ -49,7 +49,7 @@ class SearchListFragment : CustomBaseFragment<
 
         with(binding.recipesRecyclerView) {
             adapter?.notifyDataSetChanged()
-            val itemAdapter = RecipeItemAdapter(recipes, requireContext(), this@SearchListFragment)
+            val itemAdapter = MealItemAdapter(recipes, requireContext(), this@SearchListFragment)
             layoutManager = llm
             adapter = itemAdapter
         }

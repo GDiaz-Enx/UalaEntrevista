@@ -1,8 +1,8 @@
 package ar.com.ualaentrevista.network
 
-class RecipeService {
+class MealsService {
 
-    private val recipeApi = RetrofitInstance.getRetrofitInstance().create(RecipesApi::class.java)
+    private val recipeApi = RetrofitInstance.getRetrofitInstance().create(MealsApi::class.java)
 
     suspend fun getRecipes(searchValue: String) = recipeApi.getRecipes(searchValue)
 

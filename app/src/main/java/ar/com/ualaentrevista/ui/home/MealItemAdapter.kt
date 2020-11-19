@@ -11,12 +11,12 @@ import ar.com.ualaentrevista.R
 import ar.com.ualaentrevista.model.Meal
 import com.squareup.picasso.Picasso
 
-class RecipeItemAdapter constructor(
+class MealItemAdapter constructor(
     private val recipes: List<Meal>,
     private val context: Context,
     private val listner: MealClickedListener
 )
-    : RecyclerView.Adapter<RecipeItemAdapter.MealItemViewHolder>() {
+    : RecyclerView.Adapter<MealItemAdapter.MealItemViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MealItemViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.item_home_recipes, parent, false)

@@ -1,12 +1,12 @@
 package ar.com.ualaentrevista.ui.home
 
 import ar.com.ualaentrevista.base.CustomBasePresenter
-import ar.com.ualaentrevista.network.RecipeService
+import ar.com.ualaentrevista.network.MealsService
 import kotlinx.coroutines.launch
 
 class SearchListPresenter() : CustomBasePresenter<SearchListView>() {
 
-    private val service = RecipeService()
+    private val service = MealsService()
 
     fun getRecipes(search: String?) {
         uiScope.launch {

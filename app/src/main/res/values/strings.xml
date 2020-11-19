@@ -11,5 +11,6 @@
 
     <!-- Recipe Detail -->
     <string name="recipe_detail_toolbar_title">Detalle</string>
+    <string name="recipe_detail_ingredient_list_title">Ingredientes</string>
 
 </resources>

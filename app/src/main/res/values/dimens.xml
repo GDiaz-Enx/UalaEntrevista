@@ -23,5 +23,6 @@
     <!-- Recipe Detail -->
     <dimen name="recipe_detail_image_height">220dp</dimen>
     <dimen name="recipe_detail_image_gradient_height">100dp</dimen>
+    <dimen name="recipe_detail_ingredients_list_height">180dp</dimen>
 
 </resources>
